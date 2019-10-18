@@ -52,10 +52,10 @@ public class PlayerController : MonoBehaviour
             if(Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 if (controlOffsetRect.Contains(Input.GetTouch(0).position))
-                    {
-                        soundManager.PlayWing();
-                        playerRb.velocity = Vector2.up * jumpForce;
-                    }
+                {
+                    soundManager.PlayWing();
+                    playerRb.velocity = Vector2.up * jumpForce;
+                }
             }
                     
 #endif

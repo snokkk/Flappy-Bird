@@ -5,9 +5,6 @@ using Zenject;
 
 public class ScoreManager : MonoBehaviour
 {
-    [Inject]
-    private GameConfig gameConfig;
-
     public int score = 0;
 
     public void GetScore()

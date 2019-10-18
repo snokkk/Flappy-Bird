@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     private UiController uiController;
 
     [SerializeField] private GameObject pipeSpawner;
+
     public bool isPlaying = false;
 
     void Start()
