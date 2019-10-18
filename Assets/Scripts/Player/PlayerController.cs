@@ -39,13 +39,10 @@ public class PlayerController : MonoBehaviour
 
 #if UNITY_EDITOR
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (controlOffsetRect.Contains(Input.mousePosition))
-                {
-                    soundManager.PlayWing();
-                    playerRb.velocity = Vector2.up * jumpForce;
-                }
+                soundManager.PlayWing();
+                playerRb.velocity = Vector2.up * jumpForce;
             }
 
 #elif UNITY_ANDROID
