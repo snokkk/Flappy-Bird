@@ -34,17 +34,17 @@ public class UiController : MonoBehaviour
 #if UNITY_EDITOR
     void OnValidate()
     {
-        mainMenuPanel = transform.FindChild("pnl_MainMenu").gameObject;
-        settingsPanel = transform.FindChild("pnl_Settings").gameObject;
-        gamePanel = transform.FindChild("pnl_Game").gameObject;
-        bestScorePanel = transform.FindChild("pnl_BestScore").gameObject;
-        gameOverPanel = transform.FindChild("pnl_GameOver").gameObject;
-        pausePanel = transform.FindChild("pnl_Pause").gameObject;
-        bestScoreText = bestScorePanel.transform.FindChild("text_BestScore").GetComponent<Text>();
-        gameOverScoreText = gameOverPanel.transform.FindChild("text_Score").GetComponent<Text>();
-        gameOverBestScoreText = gameOverPanel.transform.FindChild("text_BestScore").GetComponent<Text>();
-        currentScoreText = gamePanel.transform.FindChild("text_Score").GetComponent<Text>();
-        settingsSoundText = settingsPanel.transform.FindChild("text_Sound").GetComponent<Text>();
+        mainMenuPanel = transform.Find("pnl_MainMenu").gameObject;
+        settingsPanel = transform.Find("pnl_Settings").gameObject;
+        gamePanel = transform.Find("pnl_Game").gameObject;
+        bestScorePanel = transform.Find("pnl_BestScore").gameObject;
+        gameOverPanel = transform.Find("pnl_GameOver").gameObject;
+        pausePanel = transform.Find("pnl_Pause").gameObject;
+        bestScoreText = bestScorePanel.transform.Find("text_BestScore").GetComponent<Text>();
+        gameOverScoreText = gameOverPanel.transform.Find("text_Score").GetComponent<Text>();
+        gameOverBestScoreText = gameOverPanel.transform.Find("text_BestScore").GetComponent<Text>();
+        currentScoreText = gamePanel.transform.Find("text_Score").GetComponent<Text>();
+        settingsSoundText = settingsPanel.transform.Find("text_Sound").GetComponent<Text>();
     }
 #endif
 
@@ -82,7 +82,7 @@ public class UiController : MonoBehaviour
     public void OnClickBestScore()
     {
         bestScorePanel.SetActive(true);
-        bestScoreText.text = "Best score: " + gameConfig.bestScore;
+        bestScoreText.text = "Best score: " + PlayerPrefs.GetInt("BestScore"); //gameConfig.bestScore;
     }
 
     public void OnClickClosePanel(GameObject panel)
@@ -94,7 +94,7 @@ public class UiController : MonoBehaviour
     {
         gamePanel.SetActive(false);
         gameOverScoreText.text = "Score: " + scoreManager.score;
-        gameOverBestScoreText.text = "Best score: " + gameConfig.bestScore;
+        gameOverBestScoreText.text = "Best score: " + PlayerPrefs.GetInt("BestScore"); //gameConfig.bestScore;
         gameOverPanel.SetActive(true);
     }
 

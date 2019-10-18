@@ -16,10 +16,11 @@ public class PlayerController : MonoBehaviour
 
     private float jumpForce;
     private Rigidbody2D playerRb;
-    
+    public Rect controlOffsetRect;
 
     private void Awake()
     {
+        controlOffsetRect = new Rect(0, 0, Screen.width, Screen.height/1.2f);
         jumpForce = gameConfig.playerJumpForce;
     }
 
@@ -34,30 +35,34 @@ public class PlayerController : MonoBehaviour
 
         if (gameController.isPlaying)
         {
-            Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
-            RaycastHit[] _hit = Physics.RaycastAll(ray, Mathf.Infinity);
-            foreach (var hit in _hit)
+
+
+#if UNITY_EDITOR
+
+            if (Input.GetMouseButtonDown(0))
             {
-                if (hit.transform.tag == "controlOffset")
+                if (controlOffsetRect.Contains(Input.mousePosition))
                 {
-//#if UNITY_ANDROID
-//                    if (Input.touchCount == 1) 
-//                    {
-//                        soundManager.PlayWing();
-//                        playerRb.velocity = Vector2.up * jumpForce;
-//                    }
-//#else
-                    if (Input.GetMouseButtonDown(0))
+                    soundManager.PlayWing();
+                    playerRb.velocity = Vector2.up * jumpForce;
+                }
+            }
+
+#elif UNITY_ANDROID
+            if(Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                if (controlOffsetRect.Contains(Input.GetTouch(0).position))
                     {
                         soundManager.PlayWing();
                         playerRb.velocity = Vector2.up * jumpForce;
                     }
-//#endif
-                }
             }
-
+                    
+#endif
         }
+
     }
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

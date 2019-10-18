@@ -15,9 +15,9 @@ public class SoundManager : MonoBehaviour
 #if UNITY_EDITOR
     void OnValidate()
     {
-        sfx_hit = transform.FindChild("sfx_hit").GetComponent<AudioSource>();
-        sfx_wing = transform.FindChild("sfx_wing").GetComponent<AudioSource>();
-        sfx_point = transform.FindChild("sfx_point").GetComponent<AudioSource>();
+        sfx_hit = transform.Find("sfx_hit").GetComponent<AudioSource>();
+        sfx_wing = transform.Find("sfx_wing").GetComponent<AudioSource>();
+        sfx_point = transform.Find("sfx_point").GetComponent<AudioSource>();
     }
 #endif
 

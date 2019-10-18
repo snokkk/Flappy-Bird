@@ -9,7 +9,7 @@ public class GameConfig : ScriptableObject
     public float pipeSpawnTime;
     public float pipeHeight;
     public float playerJumpForce;
-    public int bestScore = 0;
+    //public int bestScore = 0;
     public bool soundOn = true;
     public GameObject pipePrefab;
 }

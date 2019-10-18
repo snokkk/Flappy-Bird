@@ -17,7 +17,8 @@ public class ScoreManager : MonoBehaviour
 
     public void SetBestScore()
     {
-        if (score > gameConfig.bestScore)
-            gameConfig.bestScore = score;
+        if (score > PlayerPrefs.GetInt("BestScore"))
+            PlayerPrefs.SetInt("BestScore", score);
+          //gameConfig.bestScore = score;
     }
 }
